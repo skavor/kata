@@ -1,0 +1,72 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <div class="row mt-5" style="text-align: center;">
+        <h4>Informations du projet</h4>
+    </div>
+    <div class="mt-5">
+        <form [formGroup]="projectInfos">
+            <div class="row">
+                <div class="form-group col-md-12 mb-4">
+                    <label [ngStyle]="{'font-weight': 800}">Type:<strong [ngStyle]="{'color': 'red'}">*</strong></label>
+                    <select class="form-control" formControlName="type"
+                            data-toggle="tooltip" data-placement="top" title="Est-il propriétaire ou locataire"
+                            [ngClass]="{ 'is-invalid': submitted && f.type.errors }"
+                        >
+                        <option value="Propriétaire">Propriétaire</option>
+                        <option value="Locataire">Locataire</option>
+                    </select>
+                    <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
+                        <div *ngIf="f.type.errors.required">Type est obligatoire</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6 mb-4">
+                    <label [ngStyle]="{'font-weight': 800}">Nombre de personnes:<strong [ngStyle]="{'color': 'red'}">*</strong></label>
+                    <input type="number" class="form-control" 
+                        formControlName="totalPerson"
+                        data-toggle="tooltip" data-placement="top" title="Nombre de personnes dans le foyer"
+                        [ngClass]="{ 'is-invalid': submitted && f.totalPerson.errors }"
+                    >
+                    <div *ngIf="submitted && f.totalPerson.errors" class="invalid-feedback">
+                        <div *ngIf="f.totalPerson.errors.required">Nombre de personnes est obligatoire</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6 mb-4">
+                    <label [ngStyle]="{'font-weight': 800}">Revenu du foyer:<strong [ngStyle]="{'color': 'red'}">*</strong></label>
+                    <input type="number" class="form-control" 
+                        formControlName="revenue"
+                        data-toggle="tooltip" data-placement="top" title="Revenu du foyer doit être entre 10K et 100K"
+                        [ngClass]="{ 'is-invalid': submitted && f.revenue.errors }"
+                    >
+                    <div *ngIf="submitted && f.revenue.errors" class="invalid-feedback">
+                        <div *ngIf="f.revenue.errors.required">Revenu du foyer est obligatoire</div>
+                        <div *ngIf="f.revenue.errors.min">Revenu du foyer doit être supérieur à 10 000</div>
+                        <div *ngIf="f.revenue.errors.max">Revenu du foyer doit être inférieur à 100 000</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6 mb-4">
+                    <label [ngStyle]="{'font-weight': 800}">Surface du bien:(en m²)<strong [ngStyle]="{'color': 'red'}">*</strong></label>
+                    <input type="number" class="form-control"  
+                        formControlName="area"
+                        data-toggle="tooltip" data-placement="top" title="La surface du bien (m²)"
+                        [ngClass]="{ 'is-invalid': submitted && f.area.errors }"
+                    >
+                    <div *ngIf="submitted && f.area.errors" class="invalid-feedback">
+                        <div *ngIf="f.area.errors.required">La surface du bien est obligatoire</div>
+                        
+                    </div>
+                </div>
+              
+            </div>
+
+            <div class="text-center">
+                <button type="button" class="btn btn-success my-4" (click)="addProjectInfos()" >
+                  Suivant 
+                </button>
+              </div>
+            
+        </form>
+    </div>
+</div>
+
+

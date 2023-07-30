@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+.header-container {
+    background-color: #003250;
+    height: auto;
+    min-height: 120px;
+}
+.header-container .title {
+    color: white;
+    font-size: 38px;
+    font-family: fantasy;
+    margin-top: 22px;
+}

@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+    <div class="row mt-5 mb-5" style="text-align: center;">
+        <h4 >Merci {{user?.gender}} {{user?.firstName}} {{user?.lastName}}</h4>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Informations personnelles</div>
+                <div class="card-body">
+                    <ul>
+                        <li *ngIf="user?.firstName">Nom: {{user.firstName}}</li>
+                        <li *ngIf="user?.lastName">Prénom: {{user.lastName}}</li>
+                        <li *ngIf="user?.email">Email: {{user.email}}</li>
+                        <li *ngIf="user?.phone">Numéro de téléphone: {{user.phone}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Informations du projet</div>
+                <div class="card-body">
+                    <ul>
+                        <li *ngIf="project?.type">Type: {{project.type}}</li>
+                        <li *ngIf="project?.totalPerson">Nombre de personnes: {{project.totalPerson}}</li>
+                        <li *ngIf="project?.revenu">Revenus du foyer: {{project.revenu | currency:'EUR':true}}</li>
+                        <li *ngIf="project?.area">Surface du bien: {{project.area}} m²</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>  
+
+    <div class="row container-check-egibility">
+        <div class="col-md-3"></div>
+        <div class="col-md-6" *ngIf="project && amountRisedByEffy">
+            <app-not-eligibility [cost]="amountRisedByEffy" [projectType]="project?.type"></app-not-eligibility>
+            <app-eligibility [cost]="amountRisedByEffy" [projectType]="project?.type"></app-eligibility>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+          
+</div>

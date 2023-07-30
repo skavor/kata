@@ -1,0 +1,79 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <div class="row mt-5" style="text-align: center;">
+        <h4>Informations personnelles</h4>
+    </div>
+    <div class="mt-5">
+        <form [formGroup]="userInfos">
+            <div class="row">
+                <div class="form-group col-md-12 mb-4">
+                    <label [ngStyle]="{'font-weight': 800}">Vous êtes:<strong [ngStyle]="{'color': 'red'}">*</strong></label>
+                    <select class="form-control" formControlName="gender" 
+                    data-toggle="tooltip" data-placement="top" title="civilité"
+                     [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">
+                        <option value="Mr.">Monsieur</option>
+                        <option value="M.">Madame</option>
+                    </select>
+                   
+                    <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                        <div *ngIf="f.gender.errors.required">L'état civile est obligatoire</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6 mb-4">
+                    <label [ngStyle]="{'font-weight': 800}">Nom:<strong [ngStyle]="{'color': 'red'}">*</strong></label>
+                    <input type="text" class="form-control" 
+                            formControlName="firstname"
+                            data-toggle="tooltip" data-placement="top" title="Nom"
+                            [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }"
+                        >
+                    <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                        <div *ngIf="f.firstname.errors.required">Nom est obligatoire</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6 mb-4">
+                    <label [ngStyle]="{'font-weight': 800}">Prénom:<strong [ngStyle]="{'color': 'red'}">*</strong></label>
+                    <input type="text" class="form-control" 
+                            formControlName="lastname"
+                            data-toggle="tooltip" data-placement="top" title="Prénom"
+                            [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }"
+                    >
+                    <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                        <div *ngIf="f.lastname.errors.required">Prénom est obligatoire</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6 mb-4">
+                    <label [ngStyle]="{'font-weight': 800}">Email:<strong [ngStyle]="{'color': 'red'}">*</strong></label>
+                    <input type="email" class="form-control"  
+                            formControlName="email"
+                            data-toggle="tooltip" data-placement="top" title="Email"
+                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                    >
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">L'adresse email est obligatoire</div>
+                        <div *ngIf="f.email.errors.email">Le format n'est pas valide</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6 mb-4">
+                    <label [ngStyle]="{'font-weight': 800}">Numéro de téléphone:<strong [ngStyle]="{'color': 'red'}">*</strong></label>
+                    <input type="text" class="form-control" 
+                        formControlName="phone"
+                        data-toggle="tooltip" data-placement="top" title="Téléphone"
+                        [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
+                    >
+                    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                        <div *ngIf="f.phone.errors.required">Numéro de téléphone est obligatoire</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="button" class="btn btn-success my-4" (click)="addUserInfos()" >
+                    Suivant 
+                </button>
+              </div>
+            
+        </form>
+    </div>
+</div>
+
