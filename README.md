@@ -21,14 +21,14 @@ The project is based on 3 folders:
 Install Project from Git
 
 ```bash
-Avec https: git clone https://github.com/skavor/kata.git
-Avec SSH:  git clone git@github.com:skavor/kata.git
+Using https: git clone https://github.com/skavor/kata.git
+Using SSH:  git clone git@github.com:skavor/kata.git
 ```
 
 Install node_modules with npm
 
 ```bash
-cd kataFrontEffy
+cd kata
 npm install
 ```
 
